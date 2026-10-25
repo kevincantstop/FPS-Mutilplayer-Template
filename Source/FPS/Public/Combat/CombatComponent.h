@@ -41,7 +41,7 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(Transient, ReplicatedUsing = OnRep_CurrentWeapon)
+	UPROPERTY(Transient, BlueprintReadOnly, ReplicatedUsing = OnRep_CurrentWeapon, meta=(AllowPrivateAccess=true))
 	TObjectPtr<AWeapon> CurrentWeapon;
 
 	UFUNCTION()

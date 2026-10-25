@@ -77,6 +77,8 @@ void UCombatComponent::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty
 
 	DOREPLIFETIME(UCombatComponent, Inventory);
 	DOREPLIFETIME(UCombatComponent, CurrentWeapon);
+	
+	DOREPLIFETIME_CONDITION(UCombatComponent, bAiming, COND_SkipOwner);
 }
 
 void UCombatComponent::InitiateCycleWeapon()
@@ -101,10 +103,22 @@ void UCombatComponent::InitiateReloadWeapon()
 
 void UCombatComponent::InitiateAimPressed()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("InitiateAimPressed"), false);
+	Local_Aim(true);
+	Server_Aim(true);
 }
 
 void UCombatComponent::InitiateAimReleased()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, TEXT("InitiateAimReleased"), false);
+	Local_Aim(false);
+	Server_Aim(false);
+}
+
+void UCombatComponent::Local_Aim(bool bPressed)
+{
+	bAiming = bPressed;
+}
+
+void UCombatComponent::Server_Aim_Implementation(bool bPressed)
+{
+	Local_Aim(bPressed);
 }

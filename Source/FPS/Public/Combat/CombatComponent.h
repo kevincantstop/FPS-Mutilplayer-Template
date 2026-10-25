@@ -31,7 +31,7 @@ public:
 	void InitiateAimPressed();
 	void InitiateAimReleased();
 
-	UPROPERTY(EditDefaultsOnly, Category="FPS|Weapon")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="FPS|Weapon")
 	TObjectPtr<UWeaponData> WeaponData;
 
 	void Equip(AWeapon* Weapon);

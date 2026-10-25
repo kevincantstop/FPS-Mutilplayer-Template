@@ -34,15 +34,14 @@ protected:
 	virtual void BeginDestroy() override;
 
 private:
-
 	void Input_CycleWeapon();
 	void Input_ReloadWeapon();
 	void Input_FireWeapon_Pressed();
 	void Input_FireWeapon_Released();
 	void Input_Aim_Pressed();
 	void Input_Aim_Released();
-	
-	UPROPERTY(VisibleAnywhere)
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="FPS|Combat", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UCombatComponent> Combat;
 
 	UPROPERTY(VisibleAnywhere)

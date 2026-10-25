@@ -1,0 +1,82 @@
+# ============================================================
+# Unreal Engine 5 项目 .gitignore
+# 项目：FPS（UE 5.7 / Windows）
+#
+# 原则：只提交「人写的代码 + 美术做的资源 + 配置」，
+#       引擎和编译器生成的东西一律不提交，它们随时能重新生成。
+# ============================================================
+
+# ---------- 编译产物 ----------
+# 所有模块的 Binaries（包括 Plugins 目录下的）
+**/Binaries/
+
+# UBT / UHT 中间文件、生成的 .gen.cpp、Unity 文件
+**/Intermediate/
+
+# 着色器 / 纹理的本地缓存（删掉不影响工程，只是下次打开变慢）
+**/DerivedDataCache/
+
+# 引擎运行时产物：日志、崩溃报告、自动保存、截图、打包输出、本地配置
+Saved/
+
+# ---------- IDE / 工程文件（全部可重新生成）----------
+# 改完 .uproject 或 Build.cs 后重新 Generate 一次就有，不需要进版本库
+*.sln
+*.suo
+*.user
+*.userprefs
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+.vs/
+.idea/
+*.DotSettings.user
+
+# Xcode（如果你以后在 Mac 上开这个工程）
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+
+# ---------- 打包 / 构建配置 ----------
+Build/*
+# 但 Build 下的 Pak 黑名单和图标要保留，它们是手工维护的
+!Build/*/
+Build/*/**
+!Build/*/PakBlacklist*.txt
+!Build/**/*.ico
+
+# ---------- Content：只提交自己做的 Content/FPS ----------
+# 模板自带的 Content（Characters / VFX / Audio / LevelPrototyping ...）暂时不进版本库，
+# 它们体积大、是二进制没有 diff 意义，而且能从模板/引擎重新拿到。
+Content/*
+
+# 白名单：Content/FPS 下是自制资源（蓝图、材质、关卡、输入资产），必须进
+# 注意 git 的规则：被忽略目录里的文件无法用 ! 救回来，
+# 所以这里只能整体忽略 Content/* 再把 Content/FPS 这个目录本身放行。
+!Content/FPS/
+
+# Content/FPS 里也会出现自动生成物，同样排除
+Content/FPS/**/Collections/
+Content/FPS/**/Developers/
+Content/FPS/**/AssetRegistry.bin
+
+# ---------- 杂项 ----------
+# 合并 / 版本控制遗留的备份文件
+*.orig
+*.rej
+*.bak
+# 崩溃转储
+*.dmp
+# Rider 的本地历史
+.idea/**/shelf/
+
+# ============================================================
+# 注意：下面这些千万不要忽略，必须进版本库
+#   *.uproject     工程描述，引擎版本和插件都靠它
+#   Config/*.ini   输入映射、默认地图、渲染设置
+#   Content/FPS/** 自制资源（蓝图 .uasset、关卡 .umap、材质、输入 Action/Context）
+#   （模板自带的 Content 已在上方按你的要求排除）
+#   Source/**      C++ 代码
+#   *.Build.cs / *.Target.cs   编译规则
+# ============================================================

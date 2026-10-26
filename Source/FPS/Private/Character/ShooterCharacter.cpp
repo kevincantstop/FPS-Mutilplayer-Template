@@ -42,6 +42,8 @@ AShooterCharacter::AShooterCharacter()
 
 	Combat = CreateDefaultSubobject<UCombatComponent>("Combat");
 	Combat->SetIsReplicated(true);
+
+	DefaultFieldOfView = 90.0f;
 }
 
 void AShooterCharacter::BeginPlay()

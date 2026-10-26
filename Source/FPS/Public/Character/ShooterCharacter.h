@@ -33,6 +33,9 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void BeginDestroy() override;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="FPS|Aiming")
+	float DefaultFieldOfView;
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnAim(bool bIsAiming);
 
@@ -53,7 +56,7 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<USpringArmComponent> SpringArm;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="FPS|Camera", meta=(AllowPrivateAccess=true))
 	TObjectPtr<UCameraComponent> FirstPersonCamera;
 
 	UPROPERTY(EditAnywhere, Category="FPS|Input")

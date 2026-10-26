@@ -33,6 +33,9 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void BeginDestroy() override;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnAim(bool bIsAiming);
+
 private:
 	void Input_CycleWeapon();
 	void Input_ReloadWeapon();

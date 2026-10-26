@@ -130,9 +130,11 @@ void AShooterCharacter::Input_FireWeapon_Released()
 void AShooterCharacter::Input_Aim_Pressed()
 {
 	Combat->InitiateAimPressed();
+	OnAim(true);
 }
 
 void AShooterCharacter::Input_Aim_Released()
 {
-	Combat->InitiateAimReleased();	
+	Combat->InitiateAimReleased();
+	OnAim(false);
 }

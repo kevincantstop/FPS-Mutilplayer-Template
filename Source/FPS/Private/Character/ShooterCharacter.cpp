@@ -49,6 +49,8 @@ AShooterCharacter::AShooterCharacter()
 void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	FirstPersonCamera->SetFieldOfView(DefaultFieldOfView);
 }
 
 void AShooterCharacter::BeginDestroy()
